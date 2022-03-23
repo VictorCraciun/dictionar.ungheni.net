@@ -1,0 +1,74 @@
+<!doctype html>
+<?php
+function writeMsg() {
+  return 'Hello world!';
+}
+
+//writeMsg(); call the function
+?>
+
+<script>
+function clickMe(){
+	var b = <?php writeMsg(); ?>;
+	alert("b");
+/*
+<?php 
+echo "Hellor";
+?>*/
+}
+</script>
+
+<html lang="ro">
+<head>
+		<meta charset="utf-8">
+		<title> Proiect Dicționar Român pentru WellCode </title>
+		<style>
+			h1 {text-align: center;}
+			p {text-align: center;}
+			body {
+				background: #ffffff url("https://dictionar.ungheni.net/images/bufnita.png") no-repeat right top;
+				margin-right: 200px;
+			}
+			.card-img-top {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 50%;
+			}
+			table, th, td {
+				border:1px solid black;
+			}
+		</style>
+	</head>
+<body>
+	<img src = "images\drapelul-romaniei-mari.jpg" class = "card-img-top" alt = "Drapelul României Mari" style = "width:250px;height:125px;">
+	<h1>Dicționar explicativ al limbii Române</h1>
+	<p>Acesta este mini proiectul meu pentru WellCode</p>
+	<p>Sper să vă placă, dacă nu aștept mesaje în privat!</p>
+	<p>Utilizați-l cu plăcere :)</p>
+	<table style="width:100%">
+	<tr>
+		<th> 
+			<p> <p>
+			Intoduceți cuvântul căutat: 
+			
+			<!--<button type = "button" class = "btn btn-primary btn-sm" onclick="clickMe();"> Start </button>-->
+			<form action="search.php" method="POST">
+				<input type="search" name="word_input" id="wordinput"> 
+				<input type="submit" value="Cauta" />
+				<div class="form-floating">
+			  <textarea class="form-control" placeholder="Definiția" name = "word_description" id="worddescription" style = "height: 150px; width:400px;" ></textarea>
+			</div>
+			</form>
+			<p> <p>
+			
+		</th>
+	</tr>
+	</table>
+	<input type="search" id="search"> 
+			<form action="search.php" method="POST">
+				<input type="submit" value="Shearch" />
+			</form>
+	<footer align="center">&copy; Copyright 2022 Crăciun Victor</footer>
+</body>
+</html>
