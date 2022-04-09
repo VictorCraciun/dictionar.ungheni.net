@@ -1,74 +1,82 @@
 <!doctype html>
-<?php
-function writeMsg() {
-  return 'Hello world!';
-}
-
-//writeMsg(); call the function
-?>
-
-<script>
-function clickMe(){
-	var b = <?php writeMsg(); ?>;
-	alert("b");
-/*
-<?php 
-echo "Hellor";
-?>*/
-}
-</script>
-
-<html lang="ro">
+<html lang = "ro">
 <head>
-		<meta charset="utf-8">
-		<title> Proiect Dicționar Român pentru WellCode </title>
-		<style>
-			h1 {text-align: center;}
-			p {text-align: center;}
-			body {
-				background: #ffffff url("https://dictionar.ungheni.net/images/bufnita.png") no-repeat right top;
-				margin-right: 200px;
+	<meta charset = "utf-8">
+	<title> Proiect Dicționar Român pentru WellCode </title>
+	<style>
+		h1 {text-align: center;}
+		p {text-align: center;}
+		body {
+			background: #ffffff url("https://dictionar.ungheni.net/images/bufnita.png") no-repeat right top;
+			margin-right: 200px;
+		}
+		.card-img-top {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
 			}
-			.card-img-top {
-			  display: block;
-			  margin-left: auto;
-			  margin-right: auto;
-			  width: 50%;
-			}
-			table, th, td {
-				border:1px solid black;
-			}
-		</style>
-	</head>
+		table, th, td {
+			border:1px solid black;
+		}
+	</style>
+</head>
 <body>
 	<img src = "images\drapelul-romaniei-mari.jpg" class = "card-img-top" alt = "Drapelul României Mari" style = "width:250px;height:125px;">
 	<h1>Dicționar explicativ al limbii Române</h1>
 	<p>Acesta este mini proiectul meu pentru WellCode</p>
 	<p>Sper să vă placă, dacă nu aștept mesaje în privat!</p>
 	<p>Utilizați-l cu plăcere :)</p>
-	<table style="width:100%">
+	<table style = "width:100%">
 	<tr>
 		<th> 
-			<p> <p>
-			Intoduceți cuvântul căutat: 
-			
-			<!--<button type = "button" class = "btn btn-primary btn-sm" onclick="clickMe();"> Start </button>-->
-			<form action="search.php" method="POST">
-				<input type="search" name="word_input" id="wordinput"> 
-				<input type="submit" value="Cauta" />
-				<div class="form-floating">
-			  <textarea class="form-control" placeholder="Definiția" name = "word_description" id="worddescription" style = "height: 150px; width:400px;" ></textarea>
+			<p> <p> Intoduceți cuvântul căutat:
+			<input type="search" name="word_input" id="wordInput">
+			<button id="buttonSearchWord"> Caută </button>
+			<button id="buttonAddWord"> Adaugă </button>
+			<div class="form-floating">
+			  <textarea class="form-control" placeholder="Definiția" name = "word_description" id="wordDescription" style = "height: 150px; width:400px;" ></textarea>
 			</div>
-			</form>
 			<p> <p>
-			
 		</th>
 	</tr>
 	</table>
-	<input type="search" id="search"> 
-			<form action="search.php" method="POST">
-				<input type="submit" value="Shearch" />
-			</form>
-	<footer align="center">&copy; Copyright 2022 Crăciun Victor T</footer>
+	<footer align="center">&copy; Copyright 2022 Crăciun Victor Tudor</footer>
 </body>
 </html>
+<script>
+	const wordInput = document.querySelector('#wordInput');
+	const buttonAddWord = document.querySelector('#buttonAddWord');
+	const buttonSearchWord = document.querySelector('#buttonSearchWord');
+	const wordDescription = document.querySelector('#wordDescription');
+	const dictionaryWords = [];
+	const dictionaryWordDescriptions = [];
+	buttonAddWord .addEventListener('click', addWordToDictionary);
+	buttonSearchWord.addEventListener('click', findWordInDictionary);
+
+	function addWordToDictionary() {
+		let inputText = String(wordInput.value).toLowerCase();
+		let description = String(wordDescription.value).toLowerCase();
+		if (dictionaryWords.indexOf(inputText) == -1 && inputText !== "") {
+			if (description !== "") {
+				dictionaryWords.push(inputText);
+				dictionaryWordDescriptions [inputText] = description;
+				alert("Cuvânt dăugat în dicționar");
+			} else {
+				alert("Definiția cuvântului este goală!");
+			}
+		} else {
+			alert("Cuvântul există deja");
+		}
+	}
+
+	function findWordInDictionary() {
+		let inputText = String(wordInput.value).toLowerCase();
+		if (dictionaryWords.indexOf(inputText) !== -1) {
+			alert("Cuvânt găsit ");
+			wordDescription.value = dictionaryWordDescriptions [inputText];
+		}else {
+			alert("Cuvântul nu a fost găsit, apasă butonul adaugă pentru adăugarea cuvântului în dicționar");
+		}
+	}
+</script>
