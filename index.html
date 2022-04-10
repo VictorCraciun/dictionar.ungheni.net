@@ -3,23 +3,7 @@
 <head>
 	<meta charset = "utf-8">
 	<title> Proiect Dicționar Român pentru WellCode </title>
-	<style>
-		h1 {text-align: center;}
-		p {text-align: center;}
-		body {
-			background: #ffffff url("https://dictionar.ungheni.net/images/bufnita.png") no-repeat right top;
-			margin-right: 200px;
-		}
-		.card-img-top {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			width: 50%;
-			}
-		table, th, td {
-			border:1px solid black;
-		}
-	</style>
+	<link href="style.css"rel="stylesheet">
 </head>
 <body>
 	<img src = "images\drapelul-romaniei-mari.jpg" class = "card-img-top" alt = "Drapelul României Mari" style = "width:250px;height:125px;">
@@ -42,41 +26,7 @@
 	</tr>
 	</table>
 	<footer align="center">&copy; Copyright 2022 Crăciun Victor</footer>
+	<script src="index.js"></script>
 </body>
 </html>
-<script>
-	const wordInput = document.querySelector('#wordInput');
-	const buttonAddWord = document.querySelector('#buttonAddWord');
-	const buttonSearchWord = document.querySelector('#buttonSearchWord');
-	const wordDescription = document.querySelector('#wordDescription');
-	const dictionaryWords = [];
-	const dictionaryWordDescriptions = [];
-	buttonAddWord .addEventListener('click', addWordToDictionary);
-	buttonSearchWord.addEventListener('click', findWordInDictionary);
 
-	function addWordToDictionary() {
-		let inputText = String(wordInput.value).toLowerCase();
-		let description = String(wordDescription.value).toLowerCase();
-		if (dictionaryWords.indexOf(inputText) == -1 && inputText !== "") {
-			if (description !== "") {
-				dictionaryWords.push(inputText);
-				dictionaryWordDescriptions [inputText] = description;
-				alert("Cuvânt dăugat în dicționar");
-			} else {
-				alert("Definiția cuvântului este goală!");
-			}
-		} else {
-			alert("Cuvântul există deja");
-		}
-	}
-
-	function findWordInDictionary() {
-		let inputText = String(wordInput.value).toLowerCase();
-		if (dictionaryWords.indexOf(inputText) !== -1) {
-			alert("Cuvânt găsit ");
-			wordDescription.value = dictionaryWordDescriptions [inputText];
-		} else {
-			alert("Cuvântul nu a fost găsit, apasă butonul adaugă pentru adăugarea cuvântului în dicționar");
-		}
-	}
-</script>

@@ -1,0 +1,15 @@
+h1 {text-align: center;}
+p {text-align: center;}
+body {
+	background: #ffffff url("https://dictionar.ungheni.net/images/bufnita.png") no-repeat right top;
+	margin-right: 200px;
+}
+.card-img-top {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+table, th, td {
+	border:1px solid black;
+}
